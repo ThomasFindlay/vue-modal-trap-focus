@@ -3,7 +3,7 @@ import { customRef } from 'vue';
 const focusableElementsSelector =
   'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
-const useTrapFocus = () => {
+const useFocusTrap = () => {
   const trapRef = customRef((track, trigger) => {
     let $trapEl = null;
     return {
@@ -63,4 +63,4 @@ const useTrapFocus = () => {
   };
 };
 
-export default useTrapFocus;
+export default useFocusTrap;

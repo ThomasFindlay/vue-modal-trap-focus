@@ -1,12 +1,12 @@
 <script setup>
-import useTrapFocus from '../composables/useTrapFocus';
+import useFocusTrap from '../composables/useFocusTrap';
 
 defineEmits(['close']);
 defineProps({
   isModalOpen: Boolean,
 });
 
-const { trapRef } = useTrapFocus();
+const { trapRef } = useFocusTrap();
 
 const submitForm = () => {
   alert('Form submitted!');
