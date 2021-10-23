@@ -7,7 +7,7 @@ const isModalOpen = ref(false);
 
 <template>
   <button @click.prevent="isModalOpen = true">Open modal</button>
-  <Modal :isModalOpen="isModalOpen" />
+  <Modal :isModalOpen="isModalOpen" @close="isModalOpen = false" />
 </template>
 
 <style>
