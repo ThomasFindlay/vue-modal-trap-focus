@@ -1,12 +1,13 @@
 <script setup>
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup
-import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue';
+import Modal from './components/Modal.vue';
+
+const isModalOpen = ref(false);
 </script>
 
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3 + Vite" />
+  <button @click.prevent="isModalOpen = true">Open modal</button>
+  <Modal />
 </template>
 
 <style>
