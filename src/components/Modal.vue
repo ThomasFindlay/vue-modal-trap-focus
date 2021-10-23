@@ -1,11 +1,15 @@
 <script setup>
-defineProps({
+const props = defineProps({
   isModalOpen: Boolean,
+});
+
+onMounted(() => {
+  console.log('mounted', props);
 });
 </script>
 
 <template>
-  <div>Modal</div>
+  <div v-if="isModalOpen">Modal</div>
 </template>
 
 <style module></style>
