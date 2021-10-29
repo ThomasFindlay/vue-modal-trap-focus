@@ -33,13 +33,11 @@ const submitForm = () => {
             </div>
 
             <div :class="$style.formActions">
+              <button @click.prevent="$emit('close')">Cancel</button>
               <button @click.prevent="submitForm">Submit form</button>
             </div>
           </form>
         </main>
-        <footer>
-          <button @click.prevent="$emit('close')">Close modal</button>
-        </footer>
       </div>
     </div>
   </transition>
@@ -119,5 +117,9 @@ const submitForm = () => {
 }
 
 .formActions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
 }
 </style>
