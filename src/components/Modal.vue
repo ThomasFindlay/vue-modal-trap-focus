@@ -1,7 +1,7 @@
 <script setup>
-import useFocusTrap from '../composables/useFocusTrap';
+import useFocusTrap from "../composables/useFocusTrap";
 
-defineEmits(['close']);
+defineEmits(["close"]);
 defineProps({
   isModalOpen: Boolean,
 });
@@ -9,7 +9,7 @@ defineProps({
 const { trapRef } = useFocusTrap();
 
 const submitForm = () => {
-  alert('Form submitted!');
+  alert("Form submitted!");
 };
 </script>
 
@@ -22,13 +22,13 @@ const submitForm = () => {
       <div :class="$style.modal" ref="trapRef" role="dialog">
         <header :class="$style.formHeadline">Login</header>
         <main>
-          <form>
+          <form :class="$style.form">
             <div :class="$style.formRow">
               <label for="email">Email</label>
               <input type="email" name="email" id="email" />
             </div>
             <div :class="$style.formRow">
-              <label for="email">Password</label>
+              <label for="password">Password</label>
               <input type="password" name="password" id="password" />
             </div>
 
@@ -89,6 +89,10 @@ const submitForm = () => {
   z-index: 10;
   background-color: white;
   transform: translateY(-2rem);
+}
+
+.form {
+  margin: 0;
 }
 
 .formHeadline {
