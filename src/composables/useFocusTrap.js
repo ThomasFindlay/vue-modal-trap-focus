@@ -1,9 +1,13 @@
-import { customRef } from 'vue';
+import { customRef } from "vue";
 
 const focusableElementsSelector =
   'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
 const useFocusTrap = () => {
+  let focusableElements = [];
+  let $firstFocusable;
+  let $lastFocusable;
+
   const trapRef = customRef((track, trigger) => {
     let $trapEl = null;
     return {
@@ -13,17 +17,14 @@ const useFocusTrap = () => {
       },
       set(value) {
         $trapEl = value;
-        value ? initTrapFocus() : clearTrapFocus();
+        value ? initFocusTrap() : clearFocusTrap();
         trigger();
       },
     };
   });
-  let focusableElements = [];
-  let $firstFocusable;
-  let $lastFocusable;
 
   function keyHandler(e) {
-    const isTabPressed = e.key === 'Tab';
+    const isTabPressed = e.key === "Tab";
 
     if (!isTabPressed) return;
 
@@ -40,7 +41,7 @@ const useFocusTrap = () => {
     }
   }
 
-  function initTrapFocus() {
+  function initFocusTrap() {
     // Bail out if there is no value
     if (!trapRef.value) return;
     focusableElements = trapRef.value.querySelectorAll(
@@ -48,18 +49,18 @@ const useFocusTrap = () => {
     );
     $firstFocusable = focusableElements[0];
     $lastFocusable = focusableElements[focusableElements.length - 1];
-    document.addEventListener('keydown', keyHandler);
+    document.addEventListener("keydown", keyHandler);
     $firstFocusable.focus();
   }
 
-  function clearTrapFocus() {
-    document.removeEventListener('keydown', keyHandler);
+  function clearFocusTrap() {
+    document.removeEventListener("keydown", keyHandler);
   }
 
   return {
     trapRef,
-    initTrapFocus,
-    clearTrapFocus,
+    initFocusTrap,
+    clearFocusTrap,
   };
 };
 
